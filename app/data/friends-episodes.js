@@ -1,0 +1,116 @@
+export const seasons = [
+  {
+    season: 1,
+    episodes: [
+      { number: 1, title: "The Pilot (The One Where Monica Gets a Roommate)" },
+      { number: 2, title: "The One with the Sonogram at the End" },
+      { number: 3, title: "The One with the Thumb" },
+      { number: 4, title: "The One with George Stephanopoulos" },
+      { number: 5, title: "The One with the East German Laundry Detergent" },
+      { number: 6, title: "The One with the Butt" },
+      { number: 7, title: "The One with the Blackout" },
+      { number: 8, title: "The One Where Nana Dies Twice" },
+      { number: 9, title: "The One Where Underdog Gets Away" },
+      { number: 10, title: "The One with the Monkey" },
+      { number: 11, title: "The One with Mrs. Bing" },
+      { number: 12, title: "The One with the Dozen Lasagnas" },
+      { number: 13, title: "The One with the Boobies" },
+      { number: 14, title: "The One with the Candy Hearts" },
+      { number: 15, title: "The One with the Stoned Guy" },
+      { number: 16, title: "The One with Two Parts: Part 1" },
+      { number: 17, title: "The One with Two Parts: Part 2" },
+      { number: 18, title: "The One with All the Poker" },
+      { number: 19, title: "The One Where the Monkey Gets Away" },
+      { number: 20, title: "The One with the Evil Orthodontist" },
+      { number: 21, title: "The One with the Fake Monica" },
+      { number: 22, title: "The One with the Ick Factor" },
+      { number: 23, title: "The One with the Birth" },
+      { number: 24, title: "The One Where Rachel Finds Out" },
+    ],
+  },
+  {
+    season: 2,
+    episodes: [
+      { number: 1, title: "The One with Ross's New Girlfriend" },
+      { number: 2, title: "The One with the Breast Milk" },
+      { number: 3, title: "The One Where Heckles Dies" },
+      { number: 4, title: "The One with Phoebe's Husband" },
+      { number: 5, title: "The One with Five Steaks and an Eggplant" },
+      { number: 6, title: "The One with the Baby on the Bus" },
+      { number: 7, title: "The One Where Ross Finds Out" },
+      { number: 8, title: "The One with the List" },
+      { number: 9, title: "The One with Phoebe's Dad" },
+      { number: 10, title: "The One with Russ" },
+      { number: 11, title: "The One with the Lesbian Wedding" },
+      { number: 12, title: "The One After the Superbowl: Part 1" },
+      { number: 13, title: "The One After the Superbowl: Part 2" },
+      { number: 14, title: "The One with the Prom Video" },
+      { number: 15, title: "The One Where Ross and Rachel... You Know" },
+      { number: 16, title: "The One Where Joey Moves Out" },
+      { number: 17, title: "The One Where Eddie Moves In" },
+      { number: 18, title: "The One Where Dr. Ramoray Dies" },
+      { number: 19, title: "The One Where Eddie Won't Go" },
+      { number: 20, title: "The One Where Old Yeller Dies" },
+      { number: 21, title: "The One with the Bullies" },
+      { number: 22, title: "The One with the Two Parties" },
+      { number: 23, title: "The One with the Chicken Pox" },
+      { number: 24, title: "The One with Barry and Mindy's Wedding" },
+    ],
+  },
+  {
+    season: 3,
+    episodes: [...Array(25).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 4,
+    episodes: [...Array(24).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 5,
+    episodes: [...Array(24).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 6,
+    episodes: [...Array(25).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 7,
+    episodes: [...Array(24).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 8,
+    episodes: [...Array(24).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 9,
+    episodes: [...Array(24).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+  {
+    season: 10,
+    episodes: [...Array(18).keys()].map((i) => ({
+      number: i + 1,
+      title: `The One with Episode ${i + 1}`,
+    })),
+  },
+];
