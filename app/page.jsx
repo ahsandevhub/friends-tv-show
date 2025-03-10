@@ -1,6 +1,6 @@
 "use client";
 
-import { Play, Tv } from "lucide-react";
+import { Play, Tv, X } from "lucide-react";
 import { useState } from "react";
 import { seasons } from "./data/friends-episodes";
 
@@ -16,25 +16,26 @@ function App() {
     <div className="min-h-screen bg-black text-white font-sans">
       {/* Hero Section */}
       <div
-        className="relative h-[80vh] bg-cover bg-center flex items-end p-12"
+        className="relative h-[70vh] bg-cover bg-center flex flex-col justify-end pb-16 px-8"
         style={{
           backgroundImage:
-            "url(https://www.abystyle.com/img/c/m/294_S_Friends.jpg)",
+            "linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)), url(https://www.abystyle.com/img/c/m/294_S_Friends.jpg)",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent" />
-        <div className="relative max-w-3xl z-10">
-          <h1 className="text-6xl font-extrabold text-white">Friends</h1>
-          <p className="text-lg text-gray-300 mt-4">
+        <div className="max-w-xl">
+          <h1 className="text-5xl font-extrabold mb-4">Friends</h1>
+          <p className="text-lg text-gray-300 mb-6">
             Follow the lives of six reckless adults living in Manhattan, as they
-            navigate friendships, relationships, and adventures.
+            indulge in adventures which make their lives both troublesome and
+            happening.
           </p>
           {!isPlaying && (
             <button
               onClick={() => setIsPlaying(true)}
-              className="mt-6 bg-red-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 text-lg font-semibold hover:bg-red-500 transition duration-300"
+              className="bg-red-600 text-white px-8 py-3 rounded-md flex items-center gap-2 hover:bg-red-500 transition-transform transform hover:scale-105"
             >
-              <Play size={24} /> Play Now
+              <Play size={24} className="animate-pulse" />
+              Play Now
             </button>
           )}
         </div>
@@ -42,15 +43,19 @@ function App() {
 
       {/* Player Section */}
       {isPlaying && (
-        <div className="container mx-auto px-4 py-8 flex justify-center">
-          <div className="bg-black rounded-lg overflow-hidden shadow-xl w-full max-w-4xl">
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src={`https://vidsrc.net/embed/tv/tt0108778/${selectedSeason}/${selectedEpisode}`}
-                allowFullScreen
-              />
-            </div>
+        <div className="fixed top-0 left-0 w-full h-full bg-black/50 bg-opacity-80 backdrop-blur-md z-50 flex items-center justify-center">
+          <div className="relative w-full max-w-screen-xl aspect-video rounded-2xl shadow-2xl shadow-red-500/30 border-2 border-red-500/50">
+            <iframe
+              className="w-full h-full rounded-2xl"
+              src={`https://vidsrc.net/embed/tv/tt0108778/${selectedSeason}/${selectedEpisode}`}
+              allowFullScreen
+            />
+            <button
+              onClick={() => setIsPlaying(false)}
+              className="absolute top-4 right-4 bg-red-600 rounded-full p-2 hover:bg-red-500 transition-transform transform hover:scale-110"
+            >
+              <X size={24} className="text-white" />
+            </button>
           </div>
         </div>
       )}
@@ -65,21 +70,17 @@ function App() {
               setSelectedEpisode(1);
             }}
             value={selectedSeason}
-            className="bg-black border border-red-500 rounded-lg px-4 py-2 text-lg focus:outline-none focus:border-red-600"
+            className="bg-gray-800 border border-gray-700 text-white rounded-md px-4 py-2 focus:outline-none focus:border-red-500"
           >
             {seasons.map((s, index) => (
-              <option
-                key={index}
-                value={index + 1}
-                className="bg-black text-white"
-              >
+              <option key={index} value={index + 1} className="bg-gray-800">
                 Season {index + 1}
               </option>
             ))}
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {currentSeason.episodes.map((episode, index) => (
             <button
               key={index}
@@ -87,21 +88,47 @@ function App() {
                 setSelectedEpisode(episode.number);
                 setIsPlaying(true);
               }}
-              className={`relative p-4 rounded-lg overflow-hidden transition-all transform hover:scale-105 shadow-lg 
+              className={`
+                p-3 rounded-md transition-all transform hover:scale-105 hover:shadow-md
                 ${
                   selectedEpisode === episode.number
-                    ? "bg-red-600 text-white"
-                    : "bg-gray-900 hover:bg-gray-800"
-                }`}
+                    ? "bg-red-600 text-white shadow-red-500/50"
+                    : "bg-gray-800 border border-gray-700 hover:bg-gray-700"
+                }
+              `}
             >
-              <span className="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-md">
-                S{selectedSeason}E{episode.number}
-              </span>
-              <h3 className="text-lg font-medium mt-6">{episode.title}</h3>
+              <div className="flex flex-col items-start">
+                <div className="aspect-video w-full mb-2 overflow-hidden rounded-md">
+                  <img
+                    src={`https://img.youtube.com/vi/placeholder/mqdefault.jpg`}
+                    alt={episode.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="font-semibold text-sm md:text-base">
+                  {episode.title}
+                </h3>
+                <p className="text-xs text-gray-400 mt-1">
+                  Season {selectedSeason} Episode {episode.number}
+                </p>
+              </div>
             </button>
           ))}
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 py-6 text-center border-t border-gray-700">
+        <p className="text-gray-400">
+          Developed by{" "}
+          <a
+            href="https://ahsandevhub.com"
+            className="text-red-500 hover:underline"
+          >
+            AhsanDevhub
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
